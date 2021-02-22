@@ -15,7 +15,7 @@ class TasksController < ApplicationController
       render :new
     else
     if @task.save
-      redirect_to tasks_path, notice: "tweetしました！"
+      redirect_to tasks_path, notice: "Taskを作成しました！"
     else
       render :new
       end
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to tasks_path, notice: "tweetを編集しました！"
+      redirect_to tasks_path, notice: "Taskを編集しました！"
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to tasks_path, notice:"tweetを削除しました！"
+    redirect_to tasks_path, notice:"Taskを削除しました！"
   end
 
   # GET /tasks or /tasks.json
