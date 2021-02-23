@@ -2,12 +2,8 @@
 
 <p>
     <strong>Show:</strong>
-    <div id="tasks-show_task-note">
-        <%= @task.note %>
-    </div>
-    <div id="tasks-show_task-name">
-        <%= @task.name %>
-    </div>
+    <%= @task.note %>
+    <%= @task.name %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
