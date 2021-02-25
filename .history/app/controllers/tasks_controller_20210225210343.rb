@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all.with_title(params[:title])
+    # binding.irb
     if params[:sort_expired] == "true"
       @tasks = Task.all.order(id: "DESC")
     elsif 
@@ -55,6 +56,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:name, :note)
+      params.require(:task).permit(:name, :note, :limit)
     end
 end

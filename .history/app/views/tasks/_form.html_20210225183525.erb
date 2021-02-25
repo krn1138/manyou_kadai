@@ -18,7 +18,7 @@
     <%= form.text_area :note %>
     <%= form.label :limit %>
     <%= form.text_area :limit %>
-    <%= form_with model: @task do |f| %>
+    <% @tasks.each do |f| %>
       <%= f.select :limit, [["未着手", "未着手"], ["着手中", "着手中"], ["完了", "完了"]], include_blank: "選択して下さい" %>
     <% end %>
 

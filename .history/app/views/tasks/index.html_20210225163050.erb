@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h2>検索</h2>
-<%= form_tag(tasks_path, local: true, method: :get) do %>
-  <%= text_field_tag :title %>
-  <%= submit_tag 'Title', name: nil %>
-<% end %>
+
 <h1>Tasks</h1>
 
 <table>
@@ -22,8 +18,10 @@
       <tr>
         <td id=<%= "tasks-index_task-#{task.id}-name" %>><%= task.name %></td>
         <td id=<%= "tasks-index_task-#{task.id}-note" %>><%= task.note %></td>
-        <td><%= task.limit %> </td>
+        <td><%= task.limit %></td>
         <td><%= task.status %></td>
+  
+
         <td>
           <%= link_to 'Show', task, id: "tasks-index_task-#{task.id}-show" %>
         </td>

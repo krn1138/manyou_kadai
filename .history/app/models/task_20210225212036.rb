@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-    validates :name, :note, presence: true
+    validates :name, :note, :limit presence: true
     # def self.with_title(title)
     # # binding.irb
     #     title ? where('name LIKE ?', "%#{title}%") : all

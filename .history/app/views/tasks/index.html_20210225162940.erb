@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h2>検索</h2>
-<%= form_tag(tasks_path, local: true, method: :get) do %>
-  <%= text_field_tag :title %>
-  <%= submit_tag 'Title', name: nil %>
-<% end %>
+
 <h1>Tasks</h1>
 
 <table>
@@ -22,8 +18,16 @@
       <tr>
         <td id=<%= "tasks-index_task-#{task.id}-name" %>><%= task.name %></td>
         <td id=<%= "tasks-index_task-#{task.id}-note" %>><%= task.note %></td>
-        <td><%= task.limit %> </td>
+        <td><%= task.limit %></td>
         <td><%= task.status %></td>
+        <%= form_with model: @task do |f| %>
+
+          # 以下の一行がプルダウンを実装するためのコード（追記部分）
+          <%= f.select :faculty, [["理工学部", "理工学部"], ["経済学部", "経済学部"], ["法学部", "法学部"], ["医学部", "医学部"]], include_blank: "選択して下さい" %>
+     
+          # <%= f.submit '送信'%>
+       <% end %>
+
         <td>
           <%= link_to 'Show', task, id: "tasks-index_task-#{task.id}-show" %>
         </td>

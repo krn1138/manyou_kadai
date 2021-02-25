@@ -22,8 +22,16 @@
       <tr>
         <td id=<%= "tasks-index_task-#{task.id}-name" %>><%= task.name %></td>
         <td id=<%= "tasks-index_task-#{task.id}-note" %>><%= task.note %></td>
-        <td><%= task.limit %> </td>
-        <td><%= task.status %></td>
+        <td>
+        <%#= task.limit %>
+        </td>
+        
+    
+        <td><%= task.status %>
+          <%= form_with model: @task do |f| %>
+            <%= f.select :limit, [["未着手", "未着手"], ["着手中", "着手中"], ["完了", "完了"]], include_blank: "選択して下さい" %>
+          <% end %>
+        </td>
         <td>
           <%= link_to 'Show', task, id: "tasks-index_task-#{task.id}-show" %>
         </td>

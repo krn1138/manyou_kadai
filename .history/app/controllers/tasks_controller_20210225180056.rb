@@ -3,11 +3,12 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all.with_title(params[:title])
-    if params[:sort_expired] == "true"
-      @tasks = Task.all.order(id: "DESC")
-    elsif 
-      @tasks = Task.all
-    end
+    binding.irb
+    # if params[:sort_expired] == "true"
+    #   @tasks = Task.all.order(id: "DESC")
+    # elsif 
+    #   @tasks = Task.all
+    # end
 
   end
 
@@ -46,6 +47,7 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to tasks_path, notice:"Taskを削除しました！"
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

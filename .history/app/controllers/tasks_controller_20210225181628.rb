@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all.with_title(params[:title])
+    # binding.irb
     if params[:sort_expired] == "true"
       @tasks = Task.all.order(id: "DESC")
     elsif 
