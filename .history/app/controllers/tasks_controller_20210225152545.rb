@@ -3,11 +3,11 @@ class TasksController < ApplicationController
 
   def index
     # @tasks = Task.all.order(id: "DESC")
-    if params[:sort_expired] == "true"
+    if params[:sort_expired] include?
       @tasks = Task.all.order(id: "DESC")
     elsif 
       @tasks = Task.all
-    end
+
   end
 
   def new
