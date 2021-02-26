@@ -2,14 +2,10 @@
 <h2>検索</h2>
 <%= form_tag(tasks_path, local: true, method: :get) do %>
   <%= text_field_tag :title %>
-
-    <%= f.select :status, Task.statuses.keys, {prompt: "選択してください"}, class: "status-select" %>
-    <% end %>
-
   <%= submit_tag 'Title', name: nil %>
 <% end %>
 
-
+<%= form.select :status, Task.status.keys, {prompt: "選択してください"}, class: "status-select" %>
 
 <h1>Tasks</h1>
 

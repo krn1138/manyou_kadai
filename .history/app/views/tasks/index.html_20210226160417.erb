@@ -3,9 +3,10 @@
 <%= form_tag(tasks_path, local: true, method: :get) do %>
   <%= text_field_tag :title %>
 
+  <%= form_with model: @task do |f| %>
     <%= f.select :status, Task.statuses.keys, {prompt: "選択してください"}, class: "status-select" %>
     <% end %>
-
+    
   <%= submit_tag 'Title', name: nil %>
 <% end %>
 

@@ -11,7 +11,12 @@ class TasksController < ApplicationController
     # elsif 
     #   @tasks = Task.all
 
-    
+    if params[:task].present?
+      if params[:title] && params[:status]もし渡されたパラメータがタイトルとステータス両方だったとき
+      elsif もし渡されたパラメータがタイトルのみだったとき
+      elsif もし渡されたパラメータがステータスのみだったとき
+      end
+    end
 
   end
 

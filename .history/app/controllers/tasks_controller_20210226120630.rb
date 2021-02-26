@@ -6,12 +6,16 @@ class TasksController < ApplicationController
     # binding.irb
     @tasks = @tasks.with_title(params[:title])
     # @tasks = Task.all.with_choices(params[:choices])
-    @tasks = @tasks.where(status: params[:status]) if params[:status].present?
+
+    @tasks = Task.where(status: params[:status]) if params[:status].present?
+    
+
     @tasks = Task.all.order(id: "DESC") if params[:sort_expired] == "true"
+      
     # elsif 
     #   @tasks = Task.all
 
-    
+    end
 
   end
 

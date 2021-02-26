@@ -10,9 +10,6 @@ class TasksController < ApplicationController
     @tasks = Task.all.order(id: "DESC") if params[:sort_expired] == "true"
     # elsif 
     #   @tasks = Task.all
-
-    
-
   end
 
   def new
