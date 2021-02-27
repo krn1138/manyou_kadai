@@ -18,10 +18,10 @@ class TasksController < ApplicationController
     end
     # @tasks = Task.all.with_choices(params[:choices])
     # @tasks = @tasks.where(status: params[:status]) if params[:status].present?
+    
+    @tasks = Task.all.order(id: "DESC") if params[:sort_expired] == "true"
     # binding.irb
-    @tasks = Task.all.order(limit: "DESC") if params[:sort_expired] == "true"
-    # binding.irb
-    @tasks = Task.all.order(choice: "ASC") if params[:sort_choice] == "true"
+    @tasks = Task.all.order(choice: "ASC") if params[:sort_expired] == "true"
     # binding.irb
 
     # elsif 

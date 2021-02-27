@@ -21,7 +21,7 @@ class TasksController < ApplicationController
     # binding.irb
     @tasks = Task.all.order(limit: "DESC") if params[:sort_expired] == "true"
     # binding.irb
-    @tasks = Task.all.order(choice: "ASC") if params[:sort_choice] == "true"
+    @tasks = Task.all.order(choice: "ASC") if params[:sort_expired] == "true"
     # binding.irb
 
     # elsif 
