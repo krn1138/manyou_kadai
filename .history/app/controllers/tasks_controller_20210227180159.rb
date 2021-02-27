@@ -1,8 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
 
-  PER = 10
-
   def index
     # binding.irb
     # @tasks = Task.all
@@ -16,16 +14,15 @@ class TasksController < ApplicationController
     elsif params[:status].present?
       @tasks = Task.with_choice(params[:status])
     else 
-      # binding.pry
-      @tasks = Task.all
+      @tasks = Task.all.page(params[:task]).per(10)
     end
     # @tasks = Task.all.with_choices(params[:choices])
     # @tasks = @tasks.where(status: params[:status]) if params[:status].present?
     # binding.irb
     @tasks = Task.all.order(limit: "DESC") if params[:sort_expired] == "true"
+    # binding.irb
     @tasks = Task.all.order(choice: "ASC") if params[:sort_choice] == "true"
     # binding.irb
-    @tasks_page = @tasks.page(params[:page]).per(PER)
 
     # elsif 
     #   @tasks = Task.all

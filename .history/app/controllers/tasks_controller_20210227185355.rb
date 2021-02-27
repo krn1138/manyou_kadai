@@ -17,15 +17,15 @@ class TasksController < ApplicationController
       @tasks = Task.with_choice(params[:status])
     else 
       # binding.pry
-      @tasks = Task.all
+      @tasks = Task.page(params[:page]).per(PER)
     end
     # @tasks = Task.all.with_choices(params[:choices])
     # @tasks = @tasks.where(status: params[:status]) if params[:status].present?
     # binding.irb
-    @tasks = Task.all.order(limit: "DESC") if params[:sort_expired] == "true"
-    @tasks = Task.all.order(choice: "ASC") if params[:sort_choice] == "true"
+    @tasks = Task.order(limit: "DESC") if params[:sort_expired] == "true"
     # binding.irb
-    @tasks_page = @tasks.page(params[:page]).per(PER)
+    @tasks = Task.order(choice: "ASC") if params[:sort_choice] == "true"
+    # binding.irb
 
     # elsif 
     #   @tasks = Task.all
