@@ -18,11 +18,9 @@ class TasksController < ApplicationController
     end
     # @tasks = Task.all.with_choices(params[:choices])
     # @tasks = @tasks.where(status: params[:status]) if params[:status].present?
-    
     @tasks = Task.all.order(id: "DESC") if params[:sort_expired] == "true"
-    # binding.irb
-    @tasks = Task.all.order(choice: "ASC") if params[:sort_expired] == "true"
-    # binding.irb
+
+    @tasks = Task.all.order(id: "DESC") if params[:sort_expired] == "true"
 
     # elsif 
     #   @tasks = Task.all
@@ -73,6 +71,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:name, :note, :limit, :status, :choice)
+      params.require(:task).permit(:name, :note, :limit, :status, :choice, :day)
     end
 end

@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2021_02_27_044623) do
     t.text "note", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "limit", default: "2021-03-05", null: false
+    t.date "limit", default: "2021-03-06", null: false
     t.integer "status"
-    t.string "choice"
+    t.integer "choice"
     t.date "day"
   end
 

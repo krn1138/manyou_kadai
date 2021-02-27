@@ -16,16 +16,18 @@ class TasksController < ApplicationController
     else 
       @tasks = Task.all
     end
+
+    
     # @tasks = Task.all.with_choices(params[:choices])
     # @tasks = @tasks.where(status: params[:status]) if params[:status].present?
-    
     @tasks = Task.all.order(id: "DESC") if params[:sort_expired] == "true"
-    # binding.irb
-    @tasks = Task.all.order(choice: "ASC") if params[:sort_expired] == "true"
-    # binding.irb
-
     # elsif 
     #   @tasks = Task.all
+
+    
+
+    
+
   end
 
   def new
@@ -33,7 +35,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    # binding.irb
+    binding.irb
     @task = Task.new(task_params)
     if params[:back]
       render :new
@@ -73,6 +75,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:name, :note, :limit, :status, :choice)
+      params.require(:task).permit(:name, :note, :limit, :status, :choice, :day)
     end
 end

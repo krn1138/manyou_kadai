@@ -22,6 +22,10 @@
     <br>
     <%= form_with model: @task do |f| %>
       <%= f.select :status, [["未着手", "未着手"], ["着手中", "着手中"], ["完了", "完了"]], include_blank: "タスクの状態" %>
+    <% end %>
+    <br>
+    <br>
+    <%= form_with model: @task do |f| %>
       <%= f.select :choice, [["高", "高"], ["中", "中"], ["低", "低"]], include_blank: "優先度" %>
     <% end %>
     <br>

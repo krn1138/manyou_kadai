@@ -6,6 +6,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
     add_index :task, [:name, :status]
     add_index :name
   end

@@ -17,8 +17,6 @@
       <th>Note</th>
       <th>limit</th>
       <th>status</th>
-      <th>day</th>
-      <th>choice</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -30,7 +28,7 @@
         <td id=<%= "tasks-index_task-#{task.id}-note" %>><%= task.note %></td>
         <td><%= task.limit %> </td>
         <td><%= task.status %></td>
-        <td><%= l task.created_at %> </td>
+        <td><%= task.day %> </td>
         <td><%= task.choice %> </td>
         <td>
           <%= link_to 'Show', task, id: "tasks-index_task-#{task.id}-show" %>
@@ -44,6 +42,4 @@
 
 <br>
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
-<%= link_to "優先順位でソートする", tasks_path(sort_expired: "true") %>
-
 <%= link_to 'New Task', new_task_path %>
