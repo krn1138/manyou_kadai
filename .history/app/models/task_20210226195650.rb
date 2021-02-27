@@ -15,7 +15,7 @@ class Task < ApplicationRecord
         where(status: choices)
     end
 
-    # scope :mix_scope -> (params) { with_title(params).with_choice(params) }
+    scope :mix_scopem -> (params) { with_title(params).with_choice(params) }
 
     enum status: {
         未着手:1, 着手中:2, 完了:3

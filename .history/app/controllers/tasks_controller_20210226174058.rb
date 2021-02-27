@@ -3,23 +3,11 @@ class TasksController < ApplicationController
 
   def index
     # binding.irb
-    # @tasks = Task.all
-    # @tasks = @tasks.with_title(params[:title])
-    # @tasks = @tasks.with_choice(params[:status]) if params[:status].present?
-
-    if params[:title].present? && params[:status].present?
-      @tasks = Task.with_title(params[:title]).with_choice(params[:status])
-    elsif params[:title].present?
-      @tasks = Task.with_title(params[:title])
-    elsif params[:status].present?
-      @tasks = Task.with_choice(params[:status])
-    else 
-      @tasks = Task.all
-    end
-
-    
+    @tasks = Task.all
+    # binding.irb
+    @tasks = @tasks.with_title(params[:title])
     # @tasks = Task.all.with_choices(params[:choices])
-    # @tasks = @tasks.where(status: params[:status]) if params[:status].present?
+    @tasks = @tasks.where(status: params[:status]) if params[:status].present?
     @tasks = Task.all.order(id: "DESC") if params[:sort_expired] == "true"
     # elsif 
     #   @tasks = Task.all

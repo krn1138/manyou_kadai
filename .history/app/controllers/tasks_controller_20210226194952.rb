@@ -3,18 +3,16 @@ class TasksController < ApplicationController
 
   def index
     # binding.irb
-    # @tasks = Task.all
+    @tasks = Task.all
+    # binding.irb
     # @tasks = @tasks.with_title(params[:title])
     # @tasks = @tasks.with_choice(params[:status]) if params[:status].present?
-
     if params[:title].present? && params[:status].present?
-      @tasks = Task.with_title(params[:title]).with_choice(params[:status])
+      # 処理1
     elsif params[:title].present?
-      @tasks = Task.with_title(params[:title])
+      # 処理2
     elsif params[:status].present?
-      @tasks = Task.with_choice(params[:status])
-    else 
-      @tasks = Task.all
+      # 処理3
     end
 
     

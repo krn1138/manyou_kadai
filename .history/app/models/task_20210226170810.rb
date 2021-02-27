@@ -9,13 +9,10 @@ class Task < ApplicationRecord
         where("name Like ?", "%#{title}%")
     end
 
-    scope :with_choice, -> (choices) do
-        # binding.irb
+    scope :with_choices, -> (choices) do
         next if choices.blank?
-        where(status: choices)
+        where("status Like ?", "#{choices}")
     end
-
-    # scope :mix_scope -> (params) { with_title(params).with_choice(params) }
 
     enum status: {
         未着手:1, 着手中:2, 完了:3

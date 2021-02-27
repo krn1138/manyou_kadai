@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <h2>検索</h2>
-<%= form_with(model: @task, local: true, method: :get) do |form| %>
+<%= form_with(model: @task, local: true) do |form| %>
   <%= text_field_tag :title %>
 
     <%= form.select :status, Task.statuses.keys, {prompt: "選択してください"}, class: "status-select" %>

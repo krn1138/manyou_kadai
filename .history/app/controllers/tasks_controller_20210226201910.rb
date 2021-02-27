@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   def index
     # binding.irb
     # @tasks = Task.all
+    binding.irb
     # @tasks = @tasks.with_title(params[:title])
     # @tasks = @tasks.with_choice(params[:status]) if params[:status].present?
 
