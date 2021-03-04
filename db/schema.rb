@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_02_27_044623) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "limit", default: "2021-03-06", null: false
+    t.date "limit", default: "2021-03-11", null: false
     t.integer "choice"
     t.date "day"
     t.index ["name", "status"], name: "index_tasks_on_name_and_status"
