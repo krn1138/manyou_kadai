@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<h2>検索</h2>
+<%= form_tag(tasks_path, local: true, method: :get) do %>
+  <%= text_field_tag :title %>
+  <%= submit_tag 'Title', name: nil %>
+<% end %>
+
+<%= form.select :status, Address.statuses.keys, {prompt: "選択してください"}, class: "status-select" %>
+
+<h1>Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>task</th>
+      <th>Note</th>
+      <th>limit</th>
+      <th>status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <div class="task_row"><% @tasks.each do |task| %></div>
+      <tr>
+        <td id=<%= "tasks-index_task-#{task.id}-name" %>><%= task.name %></td>
+        <td id=<%= "tasks-index_task-#{task.id}-note" %>><%= task.note %></td>
+        <td><%= task.limit %> </td>
+        <td><%= task.status %></td>
+        <td>
+          <%= link_to 'Show', task, id: "tasks-index_task-#{task.id}-show" %>
+        </td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+<%= link_to 'New Task', new_task_path %>
