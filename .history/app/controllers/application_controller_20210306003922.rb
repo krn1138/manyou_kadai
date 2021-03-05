@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def login_not_new
-    if current_user.logged_in?
+    if current_user.logger
       new_session_path, request.referer
     end
   end
