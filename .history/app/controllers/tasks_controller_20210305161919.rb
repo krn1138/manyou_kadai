@@ -1,34 +1,32 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
 
-  PER = 3
+  PER = 10
 
   def index
-
-    tasks = current_user.tasks
     # binding.irb
     # @tasks = Task.all
     # @tasks = @tasks.with_title(params[:title])
     # @tasks = @tasks.with_choice(params[:status]) if params[:status].present?
 
     if params[:title].present? && params[:status].present?
-      @tasks = tasks.with_title(params[:title]).with_choice(params[:status])
+      @tasks = Task.with_title(params[:title]).with_choice(params[:status])
     elsif params[:title].present?
-      @tasks = tasks.with_title(params[:title])
+      @tasks = Task.with_title(params[:title])
     elsif params[:status].present?
-      @tasks = tasks.with_choice(params[:status])
+      @tasks = Task.with_choice(params[:status])
     else 
       # binding.pry
       # @tasks = Task.all
-      @tasks = tasks
+      @tasks = Task.current_user.tasks
     end
     # @tasks = Task.all.with_choices(params[:choices])
     # @tasks = @tasks.where(status: params[:status]) if params[:status].present?
     # binding.irb
-    @tasks = tasks.order(limit: "DESC") if params[:sort_expired] == "true"
-    @tasks = tasks.order(choice: "ASC") if params[:sort_choice] == "true"
+    @tasks = Task.all.order(limit: "DESC") if params[:sort_expired] == "true"
+    @tasks = Task.all.order(choice: "ASC") if params[:sort_choice] == "true"
     # binding.irb
-    @tasks = @tasks.page(params[:page]).per(PER)
+    @tasks_page = @tasks.page(params[:page]).per(PER)
 
     # elsif 
     #   @tasks = Task.all

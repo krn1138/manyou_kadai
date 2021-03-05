@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
     skip_before_action :login_required, only: [:new, :create]
-    # before_action :not_login, only: [:show]
 
   def new
     @user = User.new
@@ -17,11 +16,8 @@ class UsersController < ApplicationController
   end
 
   def show 
-    # binding.pry
     @user = User.find(params[:id])
-    if current_user.id != @user.id
-        redirect_to tasks_path
-    end
+#     @pictures = @user.pictures
   end
 
   private
@@ -30,11 +26,10 @@ class UsersController < ApplicationController
                                  :password_confirmation)
   end
 
-#   def not_login
-#     # binding.pry
-#     if current_user.id != params[:id].to_i(あんまり良くない書き方)
-#        redirect_to tasks_path
-#     end
-#   end
+  def not_login
+    unless current_user == @user.id
+      redirect_to user_path
+    end
+  end
 
 end

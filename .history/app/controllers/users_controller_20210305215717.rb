@@ -21,7 +21,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.id != @user.id
         redirect_to tasks_path
-    end
+     end
+#     @pictures = @user.pictures
   end
 
   private
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
 
 #   def not_login
 #     # binding.pry
-#     if current_user.id != params[:id].to_i(あんまり良くない書き方)
+#     if current_user.id != params[:id].to_i
 #        redirect_to tasks_path
 #     end
 #   end
