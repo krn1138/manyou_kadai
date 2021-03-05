@@ -10,4 +10,6 @@ User.create!(
    name: 'karen',
    password: 'password', 
    password_confirmation: 'password'
+   created_at: "2021-03-01 02:33:34", 
+   updated_at: "2021-03-01 02:33:34"
 )
