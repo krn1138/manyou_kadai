@@ -3,14 +3,9 @@ class UsersController < ApplicationController
     # before_action :login_not_new
     # before_action :not_login, only: [:show]
 
-    def new
-      if current_user.present?
-        flash[:notice] = "閲覧権限がありません"
-        redirect_to tasks_path
-      else
-        @user = User.new
-      end
-    end
+  def new
+    @user = User.new
+  end
 
   def create
     @user = User.new(user_params)
@@ -23,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show 
+    # binding.pry
     @user = User.find(params[:id])
     if current_user.id != @user.id
         redirect_to tasks_path
@@ -35,11 +31,11 @@ class UsersController < ApplicationController
                                  :password_confirmation)
   end
 
-end
-
 #   def not_login
 #     # binding.pry
 #     if current_user.id != params[:id].to_i(あんまり良くない書き方)
 #        redirect_to tasks_path
 #     end
 #   end
+
+end

@@ -7,9 +7,9 @@ class UsersController < ApplicationController
       if current_user.present?
         flash[:notice] = "閲覧権限がありません"
         redirect_to tasks_path
-      else
+    　else
         @user = User.new
-      end
+    　end
     end
 
   def create
@@ -37,9 +37,5 @@ class UsersController < ApplicationController
 
 end
 
-#   def not_login
-#     # binding.pry
-#     if current_user.id != params[:id].to_i(あんまり良くない書き方)
-#        redirect_to tasks_path
-#     end
-#   end
+
+

@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def login_not_new
+    if current_user.present?
+      new_user_path request.referer
+    end
+  end
+
 end
