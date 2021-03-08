@@ -17,16 +17,23 @@
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
 
-  
+  <header>
+    <nav>
+     <ul>
     <% if logged_in? %>
-    <%= link_to "Profile", user_path(current_user.id) %>
-   <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-     <% link_to "管理者画面", admin_users_path if current_user.admin? %>
+    <li>ユーザー</li>
+    <li><%= link_to "Profile", user_path(current_user.id) %><li>
+    <li><%= link_to "Logout", session_path(current_user.id), method: :delete %><li>
+      <li>管理者</li>
+      <li><% link_to "管理者画面", admin_users_path if current_user.admin? %><li>
     <% else %>
-    <%= link_to "Sign up", new_user_path %>
-<%= link_to "Login", new_session_path %>
+    <li>ゲストユーザー</li>
+    <li><%= link_to "Sign up", new_user_path %><li>
+    <li><%= link_to "Login", new_session_path %><li>
     <% end %>
-
+    </ul>
+  </nav>
+</header>
 
     
     <%= yield %>

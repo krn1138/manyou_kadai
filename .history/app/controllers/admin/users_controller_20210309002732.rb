@@ -47,10 +47,10 @@ class Admin::UsersController < ApplicationController
                                  :password_confirmation)
   end
   
-  # def admin_user
-  #   unless current_user.admin?
-  #   redirect_to root_path, notice: "管理者以外はアクセスできません"
-  # end
+  def admin_user
+    unless current_user.admin?
+    redirect_to root_path, notice: "管理者以外はアクセスできません"
+  end
 
   def set_user
     @user = User.find(params[:id])

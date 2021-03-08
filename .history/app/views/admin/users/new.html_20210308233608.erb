@@ -18,11 +18,8 @@
   <%= f.password_field :password %>
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
-  <br>
-  <br>
-  <%= f.radio_button :admin, "あり"%>あり
-  <%= f.radio_button :admin, "なし"%>なし
-  <br>
+  <%= f.radio_button :admin %>あり
+  <%= f.radio_button :admin %>なし
   <br>
   <%= f.submit "Create my account" %>
 <% end %>
