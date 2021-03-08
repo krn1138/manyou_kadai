@@ -1,0 +1,38 @@
+<br>
+<br>
+<p><%= @user.id %>:<%= @user.name %>のページ</p>
+<p>メールアドレス: <%= @user.email %></p>
+
+
+<%#= if @user.present? %>
+<%#= link_to "タスク一覧", tasks_path(@user.id) %>
+<%#= end %>
+
+  <table>
+  <thead>
+    <tr>
+    #   <th>タスク数</th>
+      <th>ユーザーid</th>
+      <th>ユーザー名</th>
+    #   <th>ユーザーemail</th>
+      <th>作成日</th>
+      <th>更新日</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <div class="user_row"><% @user.tasks.each do |user| %></div>
+      <tr>
+        # <td><%#= user.tasks.length %></td>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        # <td><%#= user.email %></td>
+        <td><%= l user.created_at %></td>
+        <td><%= l user.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <br>
+</table>
+
