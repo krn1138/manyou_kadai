@@ -1,0 +1,45 @@
+<p>ユーザー管理画面</p>
+
+<p id="notice"><%= notice %></p>
+# <%= link_to "新規登録", new_admin_user_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>タスク数</th>
+      <th>ユーザーid</th>
+      <th>ユーザー名</th>
+      <th>ユーザーemail</th>
+      <th>作成日</th>
+      <th>更新日</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <div class="user_row"><% @users.each do |user| %></div>
+      <tr>
+      <td><%= user.tasks.length %></td>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= l user.created_at %></td>
+        <td><%= l user.updated_at %></td>
+        <td><%= link_to 'Show', admin_user_path(user) %></td>
+        <% if user_signed_in? %>
+          <% if current_user == @user || current_user.admin? %>
+          <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+          <% end %>
+        <% end %>
+        <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <br>
+</table>
+<% if current_user.admin? && !(current_user == user) %>
+  <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+
+
