@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_111418) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "limit", default: "2021-03-17", null: false
+    t.date "limit", default: "2021-03-18", null: false
     t.integer "choice"
     t.date "day"
     t.bigint "user_id"

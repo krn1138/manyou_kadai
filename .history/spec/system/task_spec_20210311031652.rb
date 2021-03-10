@@ -1,19 +1,13 @@
 require 'rails_helper'
 describe 'タスク管理機能', type: :system do
-    def login(user)
-      visit new_session_path
-      fill_in 'session[email]', with: user.email
-      fill_in 'session[password]', with: user.password
-      click_button 'Log in'
-      puts 'user logged in.'
-    end
-    def admin_login(admin_user)
-      visit new_session_path
-      fill_in 'session[email]', with: admin_user.email
-      fill_in 'session[password]', with: admin_user.password
-      click_button 'Log in'
-      puts 'admin user logged in.'
-    end
+    # def login(user)
+    #   visit new_session_path
+    #   fill_in 'session[email]', with: user.email
+    #   fill_in 'session[password]', with: user.password
+    #   click_button 'Log in'
+    #   puts 'user logged in.'
+    # end
+    
     user = FactoryBot.create(:user)
     admin_user = FactoryBot.create(:admin_user)
     FactoryBot.create(:task, user_id: user.id)

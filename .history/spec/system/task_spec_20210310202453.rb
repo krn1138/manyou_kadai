@@ -67,8 +67,8 @@ describe 'タスク管理機能', type: :system do
     it '新しいタスクが一番上に表示される' do
       login(user)
       # binding.pry
-      task2 = FactoryBot.create(:tasktwo, user_id: user.id)
-      FactoryBot.create(:taskthree, user_id: user.id)
+      task2 = FactoryBot.create(:tasktwo)
+      FactoryBot.create(:taskthree)
       visit tasks_path
       click_on "tasks-index_task-#{task2.id}-show"
       expect(page).to have_content 'test_note2'

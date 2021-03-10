@@ -9,13 +9,6 @@ describe 'ユーザー登録' do
         click_button 'Log in'
         puts 'user logged in.'
       end
-    #   def admin_login(admin_user)
-    #     visit new_session_path
-    #     fill_in 'session[email]', with: admin_user.email
-    #     fill_in 'session[password]', with: admin_user.password
-    #     click_button 'Log in'
-    #     puts 'admin user logged in.'
-    #   end
     context 'ユーザが新規登録した場合' do
       it '新規登録ができること' do
         # login(user)
@@ -48,26 +41,8 @@ end
     context 'ユーザーがログインした場合' do
       it '自分の詳細画面(マイページ)に飛べること' do
         login(user)
-        expect(page).to have_content 'karenのページ'
+        expect(page).to have_content 'karen'
       end
     end
-    context '一般ユーザが他人の詳細画面に飛ぶ場合' do
-        it 'タスク一覧画面に遷移すること' do
-        end
-    end
 
-    context 'ログインユーザーいる場合' do
-        it 'ログアウトができること' do
-          login(user)
-          click_on 'Logout'
-        end
-    end
-
-    describe '管理画面のテスト' do
-        context '管理ユーザがログインした時' do
-          it '管理画面にアクセスできること' do
-          end
-        end
-        
-    
   end

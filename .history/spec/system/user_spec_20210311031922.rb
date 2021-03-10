@@ -58,16 +58,9 @@ end
 
     context 'ログインユーザーいる場合' do
         it 'ログアウトができること' do
-          login(user)
-          click_on 'Logout'
+            login(user)
+            click_on 'Logout'
+
         end
     end
-
-    describe '管理画面のテスト' do
-        context '管理ユーザがログインした時' do
-          it '管理画面にアクセスできること' do
-          end
-        end
-        
-    
   end

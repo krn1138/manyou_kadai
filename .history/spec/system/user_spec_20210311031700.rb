@@ -2,13 +2,13 @@ require 'rails_helper'
 user = FactoryBot.create(:user)
     # admin_user = FactoryBot.create(:admin_user)
 describe 'ユーザー登録' do
-    def login(user)
-        visit new_session_path
-        fill_in 'session[email]', with: user.email
-        fill_in 'session[password]', with: user.password
-        click_button 'Log in'
-        puts 'user logged in.'
-      end
+    # def login(user)
+    #     visit new_session_path
+    #     fill_in 'session[email]', with: user.email
+    #     fill_in 'session[password]', with: user.password
+    #     click_button 'Log in'
+    #     puts 'user logged in.'
+    #   end
     #   def admin_login(admin_user)
     #     visit new_session_path
     #     fill_in 'session[email]', with: admin_user.email
@@ -58,16 +58,8 @@ end
 
     context 'ログインユーザーいる場合' do
         it 'ログアウトができること' do
-          login(user)
-          click_on 'Logout'
+            login(user)
+
         end
     end
-
-    describe '管理画面のテスト' do
-        context '管理ユーザがログインした時' do
-          it '管理画面にアクセスできること' do
-          end
-        end
-        
-    
   end

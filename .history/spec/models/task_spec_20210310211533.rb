@@ -29,22 +29,22 @@ RSpec.describe Task, type: :model do
     end
 
     it 'タイトル検索' do
-      # binding.irb
+      binding.irb
       expect(Task.with_title('test_name').count).to eq 7
       expect(Task.with_title('タスク').count).to eq 0
-      expect(Task.with_title('test_name2').count).to eq 2
+      expect(Task.with_title('test_name2').count).to eq 1
 
     end
 
     it 'ステータス検索' do
-      expect(Task.with_choice('未着手').count).to eq 2
-      expect(Task.with_choice('着手中').count).to eq 2
-      expect(Task.with_choice('完了').count).to eq 3
+      expect(Task.with_choice('未着手').count).to eq 1
+      expect(Task.with_choice('着手中').count).to eq 1
+      expect(Task.with_choice('完了').count).to eq 2
     end
 
     it 'あいまい検索かつ、ステータス検索' do
       result = Task.with_title('test_name2')
-      expect(result.with_choice('着手中').count).to eq 2
+      expect(result.with_choice('着手中').count).to eq 1
     end
 
   end
