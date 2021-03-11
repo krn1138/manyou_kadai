@@ -1,7 +1,6 @@
 require 'rails_helper'
 user = FactoryBot.create(:user)
 admin_user = FactoryBot.create(:admin_user)
-usertwo = FactoryBot.create(:usertwo)
 describe 'ユーザー登録' do
     def login(user)
         visit new_session_path
@@ -51,14 +50,11 @@ end
     end
 
     context '一般ユーザが他人の詳細画面に飛ぶ場合' do
-      usertwo = FactoryBot.create(:usertwo)
         it 'タスク一覧画面に遷移すること' do
           login(user)
-          # binding.pry
-          visit user_path(usertwo.id)
-          click_on 'karen'
+          visit task_path
           expect(page).to have_content 'karenのページ'
-          expect(page).not_to have_content 'tarouのページ'
+          expect(page).not_to have_content 'oomiyaのページ'
         end
     end
 
@@ -84,28 +80,24 @@ end
 
     context '一般ユーザーががログインした時' do
         it '管理画面にアクセスできないこと' do
-          # usertwo = FactoryBot.create(:usertwo)
           login(user)
-          # binding.pry
           visit admin_users_path
-          expect(page).to have_content '管理者以外はアクセスできません'
+          expect(page).to have_content 'karenのページ'
+          expect(page).not_to have_content 'oomiyaのページ'
         end
     end
     context '管理ユーザーがログインした時' do
       it 'ユーザの新規登録ができること' do
         admin_login(admin_user)
-        # binding.pry
+        binding.pry
         click_on '管理者画面'
-        click_on 'New User'
+        click_on 'new_user'
         fill_in 'user[name]', with: 'hanako'
         fill_in 'user[email]', with: 'hamako@example.com'
         fill_in 'user[password]', with: 'kkk12345'
         fill_in 'user[password_confirmation]', with: 'kkk12345'
         choose 'user_admin_true'
         click_button 'Create my account'
-        all('td')[60].click
-        # click_on "admin_users-index_user-#{user.id}-show"
-        expect(page).to have_content '30:hanakoのページ'
       end
     end
 
@@ -113,26 +105,13 @@ end
       it 'ユーザの詳細画面にアクセスできること' do
         admin_login(admin_user)
         click_on '管理者画面'
-        all('td')[6].click
-        expect(page).to have_content '1:karenのページ'
       end
     end
 
     context '管理ユーザーがログインした時' do
       it 'ユーザの編集画面からユーザを編集できること' do
         admin_login(admin_user)
-        # binding.pry
         click_on '管理者画面'
-        all('td')[7].click
-        fill_in 'user[name]', with: 'oomiyadesu'
-        fill_in 'user[password]', with: 'kkk12345'
-        fill_in 'user[password_confirmation]', with: 'kkk12345'
-        click_button 'Create my account'
-        # binding.pry
-        all('td')[51].click
-        expect(page).to have_content 'メールアドレス: kkk@example.com'
-        # expect(page).to have_content '1:karenoomiyadesuのページ'
-        # expect(page).to have_content 'test_name3'
       end
     end
 
@@ -140,7 +119,6 @@ end
       it 'ユーザの削除をできること' do
         admin_login(admin_user)
         click_on '管理者画面'
-        all('td')[8].click
       end
     end
 

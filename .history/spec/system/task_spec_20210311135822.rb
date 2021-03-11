@@ -126,7 +126,7 @@ describe 'タスク管理機能', type: :system do
       FactoryBot.create(:tasktwo)
       visit tasks_path
       click_on "優先順位でソートする"
-      # binding.pry
+      binding.pry
       # all('td')[6].click
       choice = all('.choice')
       expect(choice[0]).to have_content '高'

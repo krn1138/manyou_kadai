@@ -103,7 +103,7 @@ end
         fill_in 'user[password_confirmation]', with: 'kkk12345'
         choose 'user_admin_true'
         click_button 'Create my account'
-        all('td')[60].click
+        all('td')[42].click
         # click_on "admin_users-index_user-#{user.id}-show"
         expect(page).to have_content '30:hanakoのページ'
       end
@@ -129,9 +129,8 @@ end
         fill_in 'user[password_confirmation]', with: 'kkk12345'
         click_button 'Create my account'
         # binding.pry
-        all('td')[51].click
+        all('td')[33].click
         expect(page).to have_content 'メールアドレス: kkk@example.com'
-        # expect(page).to have_content '1:karenoomiyadesuのページ'
         # expect(page).to have_content 'test_name3'
       end
     end

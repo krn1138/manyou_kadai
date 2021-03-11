@@ -121,7 +121,7 @@ end
     context '管理ユーザーがログインした時' do
       it 'ユーザの編集画面からユーザを編集できること' do
         admin_login(admin_user)
-        # binding.pry
+        binding.pry
         click_on '管理者画面'
         all('td')[7].click
         fill_in 'user[name]', with: 'oomiyadesu'
@@ -129,9 +129,9 @@ end
         fill_in 'user[password_confirmation]', with: 'kkk12345'
         click_button 'Create my account'
         # binding.pry
-        all('td')[51].click
+        all('td')[33].click
         expect(page).to have_content 'メールアドレス: kkk@example.com'
-        # expect(page).to have_content '1:karenoomiyadesuのページ'
+        expect(page).to have_content '1:karenoomiyadesuのページ'
         # expect(page).to have_content 'test_name3'
       end
     end

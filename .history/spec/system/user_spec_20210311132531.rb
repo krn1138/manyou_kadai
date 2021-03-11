@@ -131,7 +131,7 @@ end
         # binding.pry
         all('td')[51].click
         expect(page).to have_content 'メールアドレス: kkk@example.com'
-        # expect(page).to have_content '1:karenoomiyadesuのページ'
+        expect(page).to have_content '1:karenoomiyadesuのページ'
         # expect(page).to have_content 'test_name3'
       end
     end

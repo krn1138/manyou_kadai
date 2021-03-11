@@ -82,12 +82,12 @@ describe 'タスク管理機能', type: :system do
       FactoryBot.create(:tasktwo)
       visit tasks_path
       click_on "終了期限でソートする"
-      # binding.pry
+      binding.pry
       # all('td')[6].click
       limit = all('.limit')
-      expect(limit[0]).to have_content '2021-03-21'
-      expect(limit[1]).to have_content '2021-03-11'
-      expect(limit[2]).to have_content '2021-03-11'
+      expect(limit[]).to have_content ''
+      expect(limit[]).to have_content ''
+      expect(limit[]).to have_content ''
     end
   end
   context '検索をした場合' do
@@ -126,12 +126,12 @@ describe 'タスク管理機能', type: :system do
       FactoryBot.create(:tasktwo)
       visit tasks_path
       click_on "優先順位でソートする"
-      # binding.pry
+      binding.pry
       # all('td')[6].click
       choice = all('.choice')
-      expect(choice[0]).to have_content '高'
-      expect(choice[1]).to have_content '中'
-      expect(choice[2]).to have_content '低'
+      expect(choice[]).to have_content 'test_name1'
+      expect(choice[]).to have_content 'test_name1'
+      expect(choice[]).to have_content 'test_name1'
     end
   end
 end

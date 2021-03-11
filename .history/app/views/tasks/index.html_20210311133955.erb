@@ -41,7 +41,7 @@
         <td id=<%= "tasks-index_task-#{task.id}-limit" %> class= "limit" ><%= task.limit %></td>
         <td><%= task.status %></td>
         <td><%= l task.created_at %></td>
-        <td class= "choice"><%= task.choice %> </td>
+        <td><%= task.choice %> </td>
         <td>
         <%= link_to 'Show', task, id: "tasks-index_task-#{task.id}-show", class: "btn btn-outline-danger btn-sm", role: "button" %>
         </td>
