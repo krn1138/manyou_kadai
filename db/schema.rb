@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_111418) do
+ActiveRecord::Schema.define(version: 2021_03_11_082311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_111418) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "limit", default: "2021-03-18", null: false
+    t.date "limit", default: "2021-03-12", null: false
     t.integer "choice"
     t.date "day"
     t.bigint "user_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_111418) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "tasks", "users"
