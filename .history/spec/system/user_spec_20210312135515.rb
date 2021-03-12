@@ -176,12 +176,12 @@ describe 'user機能', type: :system do
       it '新規登録ができること' do
         # login(user)
         visit new_user_path
-        # binding.irb
+        binding.irb
         fill_in 'user[name]', with: 'jennie'
         fill_in 'user[email]', with: 'jennie@example.com'
         fill_in 'user[password]', with: 'kkk1138'
         fill_in 'user[password_confirmation]', with: 'kkk1138'
-        # choose 'user_admin_なし'
+        choose 'user_admin_なし'
         click_button 'Create my account'
       end
     end
