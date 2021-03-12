@@ -21,9 +21,8 @@
     <% if logged_in? %>
       <%= link_to current_user.name, user_path(current_user.id) %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <%#= if current_user.admin == true %>
-        <%#= link_to "管理者画面", admin_users_path  %>
-      <%= link_to "管理者画面", admin_users_path if current_user.admin == true %>
+      <%= if current_user.admin? %>
+        <%= link_to "管理者画面", admin_users_path  %>
 
       <%#= link_to "管理者画面", admin_users_path if current_user.admin? %>
     <% else %>

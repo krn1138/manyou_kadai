@@ -32,15 +32,14 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
 
-  # config.before(:each) do |example|
-  #   if example.metadata[:type] == :system
-  #     driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]  do |options|
-  #       options.add_argument('no-sandbox') 
-  #     end
-  #   end
-  # end
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]  do |options|
+        options.add_argument('no-sandbox') 
+      end
+    end
+  end
   
-
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -48,8 +47,6 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
-  # config.use_transactional_fixtures = false
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false

@@ -155,23 +155,23 @@ describe 'user機能', type: :system do
   user = FactoryBot.create(:user)
   admin_user = FactoryBot.create(:admin_user)
   usertwo = FactoryBot.create(:usertwo)
-  def login(user)
-    visit new_session_path
-    fill_in 'session[email]', with: user.email
-    fill_in 'session[password]', with: user.password
-    click_button 'Log in'
-    puts 'user logged in.'
-  end
-
-  def admin_login(admin_user)
-      visit new_session_path
-      fill_in 'session[email]', with: admin_user.email
-      fill_in 'session[password]', with: admin_user.password
-      click_button 'Log in'
-      puts 'admin user logged in.'
-  end
 
   describe 'ユーザー登録' do
+    def login(user)
+        visit new_session_path
+        fill_in 'session[email]', with: user.email
+        fill_in 'session[password]', with: user.password
+        click_button 'Log in'
+        puts 'user logged in.'
+    end
+
+    def admin_login(admin_user)
+        visit new_session_path
+        fill_in 'session[email]', with: admin_user.email
+        fill_in 'session[password]', with: admin_user.password
+        click_button 'Log in'
+        puts 'admin user logged in.'
+    end
     context 'ユーザが新規登録した場合' do
       it '新規登録ができること' do
         # login(user)
@@ -193,11 +193,11 @@ describe 'user機能', type: :system do
   end
 
   describe 'セッション機能のテスト' do
-    context 'ユーザーがログインしようとした時' do
-      it '正常にログインができること' do
-        admin_login(admin_user)
+      context 'ユーザーがログインしようとした時' do
+        it '正常にログインができること' do
+          admin_login(admin_user)
+        end
       end
-    end
   end
 
   context 'ユーザーがログインした場合' do
@@ -249,7 +249,7 @@ describe 'user機能', type: :system do
       expect(page).to have_content '管理者以外はアクセスできません'
     end
   end
-
+  
   context '管理ユーザーがログインした時' do
     it 'ユーザの新規登録ができること' do
       admin_login(admin_user)
@@ -308,3 +308,12 @@ describe 'user機能', type: :system do
   end
 
 end
+
+
+
+
+
+
+
+
+

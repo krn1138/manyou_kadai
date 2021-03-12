@@ -21,7 +21,7 @@ describe 'タスク管理機能', type: :system do
     admin_user = FactoryBot.create(:admin_user)
     usertwo = FactoryBot.create(:usertwo)
 
-    task = FactoryBot.create(:task, user_id: user.id)
+    task = FactoryBot.create(:task)
     task2 = FactoryBot.create(:tasktwo, user_id: user.id)
     task3 = FactoryBot.create(:taskthree, user_id: user.id)
 
@@ -144,7 +144,7 @@ describe 'タスク管理機能', type: :system do
       # 先に "終了期限でソートする"をクリックして順番を変更させる.
       # その後に "優先順位でソートする"をクリックさせて順番が並び替えられているか確認する
       # -----------------------------------------------
-# binding.irb
+
       click_on "終了期限でソートする"
       choice = all('.choice')
       expect(choice[0]).to have_content '低'

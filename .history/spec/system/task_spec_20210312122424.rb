@@ -146,10 +146,11 @@ describe 'タスク管理機能', type: :system do
       # -----------------------------------------------
 # binding.irb
       click_on "終了期限でソートする"
-      choice = all('.choice')
-      expect(choice[0]).to have_content '低'
-      expect(choice[1]).to have_content '高'
-      expect(choice[2]).to have_content '中'
+      limit = all('.limit')
+      date = DateTime.now + 10
+      expect(limit[0]).to have_content date.strftime("%F")
+      expect(limit[1]).to have_content DateTime.now.strftime("%F")
+      expect(limit[2]).to have_content DateTime.now.strftime("%F")
 
       click_on "優先順位でソートする"
       choice = all('.choice')

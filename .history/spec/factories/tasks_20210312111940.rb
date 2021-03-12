@@ -16,7 +16,7 @@ FactoryBot.define do
         limit { DateTime.now }
         status { '着手中' }
         choice { '中' }
-        # association :usertwo
+        # association :user
     end
 
     factory :taskthree,class: Task do
@@ -26,7 +26,7 @@ FactoryBot.define do
         limit { DateTime.now + 10 } 
         status { '完了' }
         choice { '低' }
-        # association :admin_user
+        # association :user
     end
 
     

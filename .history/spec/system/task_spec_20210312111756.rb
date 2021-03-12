@@ -20,6 +20,7 @@ describe 'タスク管理機能', type: :system do
     user = FactoryBot.create(:user)
     admin_user = FactoryBot.create(:admin_user)
     usertwo = FactoryBot.create(:usertwo)
+    binding.irb
 
     task = FactoryBot.create(:task, user_id: user.id)
     task2 = FactoryBot.create(:tasktwo, user_id: user.id)
@@ -101,6 +102,8 @@ describe 'タスク管理機能', type: :system do
       # FactoryBot.create(:tasktwo)
       visit tasks_path
       click_on "終了期限でソートする"
+      # binding.pry
+      # all('td')[6].click
       limit = all('.limit')
       date = DateTime.now + 10
       expect(limit[0]).to have_content date.strftime("%F")
@@ -110,8 +113,11 @@ describe 'タスク管理機能', type: :system do
   end
 
   context '検索をした場合' do
+    # FactoryBot.create(:task_sarch)
     it 'タイトルで検索できる' do
       login(user)
+      # FactoryBot.create(:taskthree)
+      # FactoryBot.create(:tasktwo)
       visit tasks_path
       fill_in 'title', with: 'test_name2'
       click_button 'Serch'
@@ -123,6 +129,8 @@ describe 'タスク管理機能', type: :system do
   context '検索をした場合' do
     it 'ステータスで検索できる、かつステータスとタイトル両方で検索できる' do
       login(user)
+      # FactoryBot.create(:taskthree)
+      # FactoryBot.create(:tasktwo)
       visit tasks_path
       select '着手中', from: 'status'
       fill_in 'title', with: 'test_name2'
@@ -144,7 +152,7 @@ describe 'タスク管理機能', type: :system do
       # 先に "終了期限でソートする"をクリックして順番を変更させる.
       # その後に "優先順位でソートする"をクリックさせて順番が並び替えられているか確認する
       # -----------------------------------------------
-# binding.irb
+
       click_on "終了期限でソートする"
       choice = all('.choice')
       expect(choice[0]).to have_content '低'
