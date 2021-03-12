@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_with(model: [:admin, @user], local: true) do |f| %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <br>
+  <br>
+  <p>管理者権限</p>
+  <%= f.radio_button :admin, true, checked: @user.admin %>あり
+  <%#= f.label :true %>
+  <%= f.radio_button :admin, false, checked: !@user.admin %>なし
+  <%#= f.label :false %>
+  <br>
+  <br>
+  <%= f.submit "Create my account" %>
+<% end %>

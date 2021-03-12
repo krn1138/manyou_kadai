@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ManyouOne</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <%#= params %>
+  <br>
+    
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+
+<heder class="header_one">
+    <% if logged_in? %>
+      <%= link_to current_user.name, user_path(current_user.id) %>
+      <%= link_to "タスク一覧", tasks_path(@user.id) %>
+      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+
+      <%#= if current_user.admin == true %>
+        <%#= link_to "管理者画面", admin_users_path  %>
+      <%#= link_to "管理者画面", admin_users_path if current_user.admin == true %>
+      <%= link_to "管理者画面", admin_users_path if current_user.admin? %>
+    <% else %>
+      <%= link_to "Sign up", new_user_path %>
+      <%= link_to "Login", new_session_path %>
+    <% end %>
+</div>
+
+
+    
+    <%= yield %>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<br>
+<br>
+<p><%= @user.id %>:<%= @user.name %>のページ</p>
+<p>メールアドレス: <%= @user.email %></p>
+<p>作成日: <%= @user.created_at %></p>
+<p>更新日: <%= @user.updated_at %></p>
+
+<% if @user.presence? %>
+    <%= link_to "タスク一覧", tasks_path(@user.id) %>
+  <% end %>
