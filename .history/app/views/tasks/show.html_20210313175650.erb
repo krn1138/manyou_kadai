@@ -18,12 +18,11 @@
     <div>
         <%= @task.status %>
     </div>
-    <h4>ラベル一覧</h4>
     <% @labels.each do |label| %>
       <li>
         <%= label.title %>
-      </li>
-      <br />
+        </li>
+        <br />
     <% end %>
 </p>
 

@@ -66,7 +66,6 @@ class TasksController < ApplicationController
   # end
 
   def show
-    @labels = @task.labels
   end
 
   def edit

@@ -8,7 +8,7 @@
   <%= text_field_tag :title %>
   <%= form.select :status, Task.statuses.keys, {prompt: "status:選択"}, class: "status-select" %>
   <%#= form.select("label_id", Label.pluck(:title, :id), { prompt: "" }) %>
-  <%= form.select :label_id, Label.all.collect { |p| [ p.title, p.id ] }, prompt: "label:選択" %>
+  <%= form.select :label_id, Label.all.collect { |p| [ p.title, p.id ] }, {prompt: "label:選択"}, class: "label_sarch" %>
   <%= submit_tag 'Serch', name: nil %>
 <% end %>
 </div>

@@ -21,7 +21,7 @@ class TasksController < ApplicationController
     elsif params[:status].present?
       @tasks = tasks.with_choice(params[:status])
     elsif params[:label_id].present?
-      @tasks = tasks.joins(:labels).where(labels: { id: params[:label_id] }) 
+      @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] }) 
     else 
       # binding.pry
       # @tasks = Task.all
@@ -66,7 +66,6 @@ class TasksController < ApplicationController
   # end
 
   def show
-    @labels = @task.labels
   end
 
   def edit
