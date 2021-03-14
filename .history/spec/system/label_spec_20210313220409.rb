@@ -1,20 +1,9 @@
 require 'rails_helper'
 describe 'ラベル作成機能', type: :system do
-# before do
-#     DatabaseCleaner.strategy = :transaction
-#     # このタイミングで'transaction'でデータベースをCleanしておく
-#     DatabaseCleaner.clean_with(:truncation)
-#     user = FactoryBot.create(:user)
-#     label = FactoryBot.create(:label)
-#     labeltwo = FactoryBot.create(:label_two)
-#     labelthree = FactoryBot.create(:label_three)
-#     task = FactoryBot.create(:task, user: user)
-#     task2 = FactoryBot.create(:tasktwo, user: user)
-#     task.labels << label
-#     task.labels << labeltwo
-#     task2.labels << labelthree
-# end
-
+before do
+    DatabaseCleaner.strategy = :transaction
+    # このタイミングで'transaction'でデータベースをCleanしておく
+    DatabaseCleaner.clean_with(:truncation)
     user = FactoryBot.create(:user)
     label = FactoryBot.create(:label)
     labeltwo = FactoryBot.create(:label_two)
@@ -24,6 +13,12 @@ describe 'ラベル作成機能', type: :system do
     task.labels << label
     task.labels << labeltwo
     task2.labels << labelthree
+end
+# label = FactoryBot.create(:label, label_id: task_id)
+# label = FactoryBot.create(:label, task_id: task_id)
+# label = FactoryBot.create(:label, task_id: label_id)
+# label = FactoryBot.create(:label, title: task_id)
+
 
   def login(user)
     visit new_session_path
@@ -66,17 +61,10 @@ describe 'ラベル作成機能', type: :system do
   end
 
   context '検索した場合' do
-        task3 = FactoryBot.create(:taskthree, user: user)
-        task4 = FactoryBot.create(:taskfour, user: user)
-        label4 = FactoryBot.create(:label_four)
-        label3 = FactoryBot.create(:label_three)
-        task3.labels << label3
-        task4.labels << label4
-        task4.labels << label
     it 'ラベルで検索できる' do
         login(user)
         visit tasks_path
-        # binding.pry
+        
         select 'sample1', from: 'label_id'
         click_button 'Serch'
         all('td')[6].click

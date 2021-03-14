@@ -65,8 +65,6 @@ RSpec.describe Task, type: :model do
       result = Task.with_title('test_name2')
       expect(result.with_choice('着手中').count).to eq 2
     end
-
-  end
 end
 
 

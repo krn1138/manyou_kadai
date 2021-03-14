@@ -66,17 +66,10 @@ describe 'ラベル作成機能', type: :system do
   end
 
   context '検索した場合' do
-        task3 = FactoryBot.create(:taskthree, user: user)
-        task4 = FactoryBot.create(:taskfour, user: user)
-        label4 = FactoryBot.create(:label_four)
-        label3 = FactoryBot.create(:label_three)
-        task3.labels << label3
-        task4.labels << label4
-        task4.labels << label
     it 'ラベルで検索できる' do
         login(user)
         visit tasks_path
-        # binding.pry
+        
         select 'sample1', from: 'label_id'
         click_button 'Serch'
         all('td')[6].click

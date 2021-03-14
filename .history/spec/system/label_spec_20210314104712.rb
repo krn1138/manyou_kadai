@@ -76,7 +76,7 @@ describe 'ラベル作成機能', type: :system do
     it 'ラベルで検索できる' do
         login(user)
         visit tasks_path
-        # binding.pry
+        binding.pry
         select 'sample1', from: 'label_id'
         click_button 'Serch'
         all('td')[6].click

@@ -107,7 +107,7 @@ describe 'タスク管理機能', type: :system do
     it '終了期限の降順に並び替えられたタスク一覧が表示される' do
       login(user)
       visit tasks_path
-      # binding.pry
+      binding.pry
       click_on "終了期限でソートする"
       limit = all('.limit')
       date = DateTime.now + 10
@@ -152,7 +152,7 @@ describe 'タスク管理機能', type: :system do
       # 先に "終了期限でソートする"をクリックして順番を変更させる.
       # その後に "優先順位でソートする"をクリックさせて順番が並び替えられているか確認する
       # -----------------------------------------------
-# binding.irb
+binding.irb
       click_on "終了期限でソートする"
       sleep(1)
       choice = all('.choice')

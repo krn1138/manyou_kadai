@@ -106,8 +106,9 @@ describe 'タスク管理機能', type: :system do
   context '終了期限でソートするというリンクを押した場合' do
     it '終了期限の降順に並び替えられたタスク一覧が表示される' do
       login(user)
+      # FactoryBot.create(:taskthree, user: user)
+      # FactoryBot.create(:tasktwo)
       visit tasks_path
-      # binding.pry
       click_on "終了期限でソートする"
       limit = all('.limit')
       date = DateTime.now + 10
@@ -154,7 +155,6 @@ describe 'タスク管理機能', type: :system do
       # -----------------------------------------------
 # binding.irb
       click_on "終了期限でソートする"
-      sleep(1)
       choice = all('.choice')
       expect(choice[0]).to have_content '低'
       expect(choice[1]).to have_content '高'
@@ -162,7 +162,6 @@ describe 'タスク管理機能', type: :system do
 
       click_on "優先順位でソートする"
       choice = all('.choice')
-      sleep(1)
       expect(choice[0]).to have_content '高'
       expect(choice[1]).to have_content '中'
       expect(choice[2]).to have_content '低'

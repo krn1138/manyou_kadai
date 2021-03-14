@@ -1,38 +1,27 @@
 require 'rails_helper'
 describe 'タスク管理機能', type: :system do
-  # before do
-  #   DatabaseCleaner.strategy = :transaction
-  #   DatabaseCleaner.clean_with(:truncation)
-  #   user = FactoryBot.create(:user)
-  #   admin_user = FactoryBot.create(:admin_user)
-  #   usertwo = FactoryBot.create(:usertwo)
-  #   task = FactoryBot.create(:task, user_id: user.id)
-  #   task2 = FactoryBot.create(:tasktwo, user_id: user.id)
-  #   task3 = FactoryBot.create(:taskthree, user_id: user.id)
-  # end
-
   user = FactoryBot.create(:user)
   admin_user = FactoryBot.create(:admin_user)
   usertwo = FactoryBot.create(:usertwo)
   task = FactoryBot.create(:task, user_id: user.id)
   task2 = FactoryBot.create(:tasktwo, user_id: user.id)
   task3 = FactoryBot.create(:taskthree, user_id: user.id)
-  
-  def login(user)
-    visit new_session_path
-    fill_in 'session[email]', with: user.email
-    fill_in 'session[password]', with: user.password
-    click_button 'Log in'
-    puts 'user logged in.'
-  end
 
-  def admin_login(admin_user)
-    visit new_session_path
-    fill_in 'session[email]', with: admin_user.email
-    fill_in 'session[password]', with: admin_user.password
-    click_button 'Log in'
-    puts 'admin user logged in.'
-  end
+    def login(user)
+      visit new_session_path
+      fill_in 'session[email]', with: user.email
+      fill_in 'session[password]', with: user.password
+      click_button 'Log in'
+      puts 'user logged in.'
+    end
+
+    def admin_login(admin_user)
+      visit new_session_path
+      fill_in 'session[email]', with: admin_user.email
+      fill_in 'session[password]', with: admin_user.password
+      click_button 'Log in'
+      puts 'admin user logged in.'
+    end
 
   describe '一覧表示機能' do
     context '一覧画面に遷移した場合' do
@@ -106,8 +95,9 @@ describe 'タスク管理機能', type: :system do
   context '終了期限でソートするというリンクを押した場合' do
     it '終了期限の降順に並び替えられたタスク一覧が表示される' do
       login(user)
+      # FactoryBot.create(:taskthree, user: user)
+      # FactoryBot.create(:tasktwo)
       visit tasks_path
-      # binding.pry
       click_on "終了期限でソートする"
       limit = all('.limit')
       date = DateTime.now + 10
@@ -154,7 +144,6 @@ describe 'タスク管理機能', type: :system do
       # -----------------------------------------------
 # binding.irb
       click_on "終了期限でソートする"
-      sleep(1)
       choice = all('.choice')
       expect(choice[0]).to have_content '低'
       expect(choice[1]).to have_content '高'
@@ -162,7 +151,6 @@ describe 'タスク管理機能', type: :system do
 
       click_on "優先順位でソートする"
       choice = all('.choice')
-      sleep(1)
       expect(choice[0]).to have_content '高'
       expect(choice[1]).to have_content '中'
       expect(choice[2]).to have_content '低'
