@@ -1,0 +1,45 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.label :name %>
+    <%= form.text_area :name %>
+    <%= form.label :note %>
+    <%= form.text_area :note %>
+    <%= form.label :limit %>
+    <%= form.date_select :limit %>
+    <br>
+    <br>
+    <%= form_with model: @task do |f| %>
+      <%= f.select :status, Task.statuses.keys, include_blank: "タスクの状態" %>
+      <%= f.select :choice, Task.choices.keys, include_blank: "優先度" %>
+    <br>
+    <br>
+    <div class="field">
+  <% Label.all.each do |label| %>
+      <% if action_name == 'new' || action_name == 'create' %>
+        <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false}, label[:id], "" %>
+        <label><%= label.title %></label>
+      <% elsif action_name == 'edit' || action_name == 'update' %>
+        <%= form.check_box :label_ids, { multiple: true, checked: @task.label_ids.include?(label.id), disabled: label[:disabled], include_hidden: false}, label[:id], "" %>
+        <label><%= label.title %></label>
+      <% end %>
+    <% end %>
+  </div>
+      <%= form.submit id: "tasks-form_submit" %>
+      
+    <% end %>
+  <% end %>
+  </div>
+<% end %>
+<% end %>
